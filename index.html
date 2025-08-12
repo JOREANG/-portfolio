@@ -16,7 +16,7 @@
 
     /* ===== 레이아웃 ===== */
     .wrap{min-height:100dvh; display:grid; grid-template-columns:var(--sidebar-w) 1fr}
-    aside{position:sticky; top:0; align-self:start; height:100dvh; padding:24px; background:rgba(17,19,26,.85); backdrop-filter:saturate(130%) blur(10px); border-right:1px solid rgba(255,255,255,.06)}
+    aside{position:sticky; top:0; align-self:start; height:100dvh; padding:24px; background:rgba(17,19,26,.85); backdrop-filter:saturate(130%) blur(10px); border-right:1px solid rgba(255,255,255,.06); display:flex; flex-direction:column;}
     main{padding:32px; min-width:0}
 
     /* ===== 사이드바 ===== */
@@ -28,6 +28,7 @@
     .menu a[aria-current="page"], .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
 
     .sidebar-footer{margin-top:auto; font-size:12px; color:var(--muted)}
+    .center{display:flex; flex-direction:column; justify-content:center; gap:12px; flex:1;}
 
     /* ===== 메인 ===== */
     .page{display:none}
@@ -41,6 +42,11 @@
       aside{position:static; height:auto; border-right:0; border-bottom:1px solid rgba(255,255,255,.06)}
       main{padding:20px}
       nav{flex-direction:row; flex-wrap:wrap}
+      .center{justify-content:flex-start}
+    }
+      aside{position:static; height:auto; border-right:0; border-bottom:1px solid rgba(255,255,255,.06)}
+      main{padding:20px}
+      nav{flex-direction:row; flex-wrap:wrap}
     }
   </style>
 </head>
@@ -48,15 +54,17 @@
   <div class="wrap">
     <!-- 좌측 고정 메뉴 -->
     <aside>
-      <div class="logo"><span class="dot"></span>조랭 포트폴리오</div>
-      <nav class="menu" role="navigation">
-        <a href="#gallery" data-link aria-current="page">갤러리</a>
-        <a href="#branding" data-link>브랜딩</a>
-        <a href="#poster" data-link>포스터/전단</a>
-        <a href="#sns" data-link>SNS 썸네일</a>
-        <a href="#about" data-link>소개</a>
-        <a href="#contact" data-link>연락</a>
-      </nav>
+      <div class="center">
+        <div class="logo"><span class="dot"></span> 조랭 포트폴리오</div>
+        <nav class="menu" role="navigation">
+          <a href="#gallery" data-link aria-current="page">갤러리</a>
+          <a href="#branding" data-link>브랜딩</a>
+          <a href="#poster" data-link>포스터/전단</a>
+          <a href="#sns" data-link>SNS 썸네일</a>
+          <a href="#about" data-link>소개</a>
+          <a href="#contact" data-link>연락</a>
+        </nav>
+      </div>
       <div class="sidebar-footer">© 2025 JOREANG · All rights reserved</div>
     </aside>
 
