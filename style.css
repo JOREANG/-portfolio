@@ -16,9 +16,11 @@ main{padding:32px; min-width:0}
 .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; margin-bottom:22px}
 .dot{width:12px; height:12px; border-radius:999px; background:linear-gradient(135deg,var(--brand),#24e0a8)}
 
-nav{display:flex; flex-direction:column; gap:8px; margin:12px 0 24px}
-.menu a{padding:10px 12px; border-radius:10px; color:var(--muted)}
-.menu a[aria-current="page"], .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+nav{display: flex; flex-direction: column; gap: 8px; margin: 12px 0 24px;}
+
+.menu a{padding: 10px 12px; border-radius: 10px; color: var(--muted); display: block;}
+.menu a[aria-current="page"],
+.menu a:hover{background: rgba(255,255,255,.06); color: var(--text);}
 
 .sidebar-footer{margin-top:auto; font-size:12px; color:var(--muted)}
 .center{display:flex; flex-direction:column; justify-content:center; gap:12px; flex:1;}
