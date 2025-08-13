@@ -1,77 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--<link rel="stylesheet" href="style.css">-->
-  <title>조랭 포트폴리오</title>
+  <title>Portfolio – Hero Section</title>
+
+  <!-- Webfonts -->
+  <style>
+  @font-face {
+    font-family: 'PartialSansKR-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+  </style>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <!-- 좌측 고정 메뉴 -->
-    <aside>
-      <div class="center">
-        <div class="logo"><span class="dot"></span> 조랭 포트폴리오</div>
-        <nav class="menu" role="navigation">
-          <a href="#gallery" data-link aria-current="page">About</a>
-          <a href="#branding" data-link>웹&랜딩페이지</a>
-          <a href="#branding" data-link>홍보물디자인</a>
-          <a href="#branding" data-link>SNS콘텐츠</a>
-          <a href="#branding" data-link>이벤트&프로모션</a>
-          <a href="#branding" data-link>링크&썸네일</a>
-          <a href="#contact" data-link>연락</a>
-        </nav>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <!-- Hero -->
+  <header class="hero" role="banner">
+    <!-- 파란 배경 + 종이 질감 -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="paper-texture"></div>
+      <svg class="torn-edge" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <mask id="tornMask">
+            <rect width="100%" height="100%" fill="white"/>
+            <path d="M0,120 C120,130 240,110 360,125 C480,140 600,115 720,130 C840,145 960,120 1080,132 C1200,144 1320,118 1440,128 L1440,200 L0,200Z" fill="black"/>
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="var(--blue-800)" mask="url(#tornMask)"></rect>
+      </svg>
+    </div>
+
+    <div class="container grid hero__grid" id="main">
+      <!-- 좌측 텍스트 -->
+      <div class="col col-7 col-md-12 hero__copy">
+        <p class="eyebrow ff-nanum">Selected Works 2019 – 2025</p>
+        <h1 class="title ff-partial">
+          <span>Web</span><br/>
+          <span>Designer &</span><br/>
+          <span>Front-End Developer</span>
+        </h1>
+        <div class="name-badge ff-partial"><strong>Lee YEJIN</strong></div>
+        <ul class="tool-chips ff-nanum" aria-label="기술 스택">
+          <li><span class="chip-icon">✨</span>Photoshop</li>
+          <li><span class="chip-icon">✏️</span>Illustrator</li>
+          <li><span class="chip-icon">💻</span>HTML</li>
+          <li><span class="chip-icon">🟠</span>CSS</li>
+          <li><span class="chip-icon">⚙️</span>JavaScript</li>
+        </ul>
       </div>
-      <div class="sidebar-footer">© 2025 JOREANG · All rights reserved</div>
-    </aside>
-    <!-- 우측 콘텐츠 영역 -->
-    <main>
-      <section id="gallery" class="page active">
-        <h1>갤러리</h1>
-        <div class="card">여기에 이후 단계에서 그리드/라이트박스를 붙일 거예요.</div>
-      </section>
 
-      <section id="branding" class="page">
-        <h1>브랜딩</h1>
-        <div class="card">브랜딩 카테고리 콘텐츠 자리</div>
-      </section>
-
-      <section id="poster" class="page">
-        <h1>포스터/전단</h1>
-        <div class="card">전단·홍보물 작업물 자리</div>
-      </section>
-
-      <section id="sns" class="page">
-        <h1>SNS 썸네일</h1>
-        <div class="card">카드뉴스·썸네일 자리</div>
-      </section>
-
-      <section id="about" class="page">
-        <h1>소개</h1>
-        <div class="card">
-          안녕하세요, 조랭입니다. 광고·홍보물 기반 디자인을 주로 해왔고, 포트폴리오 일부를 정적 사이트로 정리했습니다.
+      <!-- 우측 캐릭터 -->
+      <div class="col col-5 col-md-12 hero__mascot" aria-label="말풍선 캐릭터">
+        <div class="mascot">
+          <div class="face">
+            <div class="eye eye--l"></div>
+            <div class="eye eye--r"></div>
+            <div class="mouth"></div>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section id="contact" class="page">
-        <h1>연락</h1>
-        <div class="card">이메일, 인스타그램, 전화 등 연락처 적는 영역</div>
-      </section>
-    </main>
-  </div>
+    <!-- 노랑 체크 배경 -->
+    <div class="grid-bg" aria-hidden="true"></div>
+  </header>
 
-  <script>
-    // 아주 가벼운 해시 라우팅: 좌측 메뉴 클릭 시 해당 섹션만 표시
-    const links = document.querySelectorAll('[data-link]');
-    const pages = document.querySelectorAll('.page');
-
-    function show(hash){
-      const id = (hash || location.hash || '#gallery').replace('#','');
-      pages.forEach(p => p.classList.toggle('active', p.id === id));
-      links.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'page' : null));
-    }
-    window.addEventListener('hashchange', () => show(location.hash));
-    show();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
