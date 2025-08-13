@@ -73,24 +73,6 @@ body{ margin:0; background:var(--blue-700); color:var(--white) }
 }
 .chip-icon{ filter:saturate(1.1) }
 
-/* 캐릭터 */
-.hero__mascot{ display:flex; justify-content:center; align-items:center }
-.mascot{
-  position:relative; width:min(100%, 420px); aspect-ratio:1.35/1;
-  background:var(--y-500);
-  border-radius:999px 999px 120px 120px / 70% 70% 30% 30%;
-  overflow:hidden;
-}
-.face{ position:absolute; inset:0 }
-.eye{
-  position:absolute; width:14px; height:14px; background:var(--black); border-radius:50%;
-  top:45%; left:45%; transform:translate(-50%,-50%);
-}
-.eye--r{ left:55% }
-.mouth{
-  position:absolute; width:40px; height:20px; border-bottom:5px solid var(--black);
-  border-radius:0 0 40px 40px; top:56%; left:50%; transform:translate(-50%,-50%);
-}
 
 @media (max-width:900px){
   .title{ font-size:56px }
