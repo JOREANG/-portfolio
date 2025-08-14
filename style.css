@@ -21,7 +21,6 @@ body {
 /* 전체 래퍼 */
 .wrap{
   min-height: 100dvh;              /* 화면 꽉 채움 */
-  background-color: #ffefc7;       /* 베이스 컬러 */
   background-image: url('img/pattern-1.png'); /* 격자 패턴 */
   background-repeat: repeat;       /* 타일 반복 */
   background-position: 0 0;
