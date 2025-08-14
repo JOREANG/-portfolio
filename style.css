@@ -35,6 +35,7 @@ body {
 }
 
 /* header영역 */
+.header {background: url('../img/header-background.png') no-repeat center/cover;}
 .selected-works {text-align: right; /* 안에 있는 글자나 요소를 오른쪽 정렬 */display: block; /* 혹시 inline이면 block으로 */}
 .title, .name, .skills {text-align: left;}
 .name {
