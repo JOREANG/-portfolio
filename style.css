@@ -1,1 +1,29 @@
+/* 기본 리셋 */
+@font-face {
+  font-family: 'PartialSansKR-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 
+html, body { height: 100%; }
+body { margin: 0; }
+
+body {
+  background-color: #000080;
+  margin: 0;
+  padding: 0;
+  color: #ffefc7;
+  font-family: 'PartialSansKR-Regular', sans-serif;
+}
+
+/* 전체 래퍼 */
+.wrap{
+  min-height: 100dvh;              /* 화면 꽉 채움 */
+  background-color: #ffefc7;       /* 베이스 컬러 */
+  background-image: url('/img/pattern-1.png'); /* 격자 패턴 */
+  background-repeat: repeat;       /* 타일 반복 */
+  background-position: 0 0;
+  background-size: auto;           /* 원본 크기 유지 (필요시 32px 같은 값으로 조정 가능) */
+}
