@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 기본 리셋 */
+    @font-face {
+      font-family: 'PartialSansKR-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+    
+    html, body { height: 100%; }
+    body { margin: 0; }
 
+    body {
+      background-color: #000080;
+      margin: 0;
+      padding: 0;
+      color: #ffefc7;
+      font-family: 'PartialSansKR-Regular', sans-serif;
+    }
+    
+    /* 전체 래퍼 */
+    .wrap{
+      min-height: 100dvh;              /* 화면 꽉 채움 */
+      background-color: #ffefc7;       /* 베이스 컬러 */
+      background-image: url('./img/pattern-1.png'); /* 격자 패턴 */
+      background-repeat: repeat;       /* 타일 반복 */
+      background-position: 0 0;
+      background-size: auto;           /* 원본 크기 유지 (필요시 32px 같은 값으로 조정 가능) */
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;  /* 최대 폭 */
+      margin: 0 auto;     /* 가운데 정렬 */
+      padding: 0 20px;    /* 좌우 여백 (반응형 안전용) */
+      box-sizing: border-box; /* 패딩 포함 폭 계산 */
+    }
+
+    /* header영역 */
+    .selected-works {text-align: right; /* 안에 있는 글자나 요소를 오른쪽 정렬 */display: block; /* 혹시 inline이면 block으로 */}
+    .title, .name, .skills {text-align: left;}
+    .name {
+      position: relative;           /* 기준점 */
+      display: inline-block;        /* 텍스트 크기에 맞게 박스화 */
+      font-weight: bold;
+      font-size: 2rem;
+    }
+    
+    .name::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0.2em;                 /* 텍스트 밑 위치 */
+      width: 100%;
+      height: 0.4em;                 /* 사각형 두께 */
+      background-color: #fdc500;     /* 노란색 */
+      z-index: -1;                   /* 텍스트 뒤로 */
+    }
+
+    /* 스킬 바 (한 줄 텍스트 버전) */
+    .skills{
+      display: inline-block;            /* 내용만큼만 너비 */
+      padding: 14px 28px;
+      border-radius: 9999px;            /* 알약 모양 */
+      color: #ffefc7;                   /* 텍스트 크림색 */
+      font-family: 'NanumSquare', sans-serif;
+      font-size: 30.67px;               /* 23pt */
+      line-height: 1.2;
+    
+      /* 어두운 파란 배경 위에서 보이는 입체감 */
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),   /* 위쪽 하이라이트 */
+        inset 0 -12px 22px rgba(0,0,0,.35),    /* 아래쪽 그라데이션 음영 */
+        0 8px 18px rgba(0,0,0,.25);            /* 외곽 드롭섀도 */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="container">
+        <div class="inner-header">
+          <div class="selected-works">Selected Works 2019 - 2025</div>
+          <div class="title">
+            Web <br>
+            Designer & <br>
+            Front-End Developer
+          </div>
+          <div class="name">Lee YEJIN</div>
+          <div class="skills">
+            ✨Photoshop | ✏Illustrator | 💻HTML | 🎨CSS | ⚙JavaScript
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main -->
+    <main class="main">
+      <section class="about">
+        <div class="container">
+          <div class="inner-about">
+            
+          </div>
+        </div>
+      </section>
+      
+      <section class="gallery">
+        <div class="container">
+          <div class="inner-gallery">
+            
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="inner-footer">
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // JavaScript 작성
+  </script>
+</body>
+</html>
