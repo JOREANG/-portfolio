@@ -151,9 +151,56 @@ body {
   width: 100px;
   height: auto;
   z-index: 10; /* 도형보다 앞으로 */
+  pointer-events: none !important;       /* 클릭/커서 이벤트 제거 */
+  cursor: default !important;            /* 손 모양 안 뜨게 */
+  -webkit-user-drag: none !important;    /* 크롬/사파리 드래그 방지 */
+  user-drag: none !important;
+  -webkit-user-select: none;             /* 선택 방지 */
+  user-select: none;
 }
 
 .friend-face img {
   width: 60%; /* 100%보다 줄이면 작아짐 */
   height: auto;
+}
+
+
+/* 푸터영역 */
+.footer {
+  margin-top: auto;
+  background-color: #222; /* 푸터 배경 */
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.inner-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #fdc500; /* 노란 포인트 컬러 */
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
