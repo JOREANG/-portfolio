@@ -30,7 +30,7 @@ body {
       width: 100%;
       max-width: 1200px;  /* 최대 폭 */
       margin: 0 auto;     /* 가운데 정렬 */
-      padding: 0 px;    /* 좌우 여백 (반응형 안전용) */
+      padding: 0px;    /* 좌우 여백 (반응형 안전용) */
       box-sizing: border-box; /* 패딩 포함 폭 계산 */
 }
 
