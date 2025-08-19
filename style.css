@@ -317,22 +317,25 @@ body {
   cursor: pointer;
 }
 .gallery-more {
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-top: 30px;
+  padding: 14px 36px; /* 버튼 크게 */
   background: #fdc500;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px; /* 더 둥글게 */
   font-family: 'NanumSquare', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;  /* 글자 크게 */
+  font-weight: 700; /* 굵게 */
   cursor: pointer;
-  transition: background 0.2s ease, opacity 0.3s ease; /* opacity 전환 추가 */
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.3s ease;
 }
-.gallery-more.fade {
-  opacity: 0; /* 페이드 아웃 상태 */
-}
+
 .gallery-more:hover {
   background: #ffb300;
+  transform: scale(1.05); /* 호버 시 살짝 커짐 */
+}
+
+.gallery-more.fade {
+  opacity: 0;
 }
 /* 이미지 팝업 영역 */
 .modal {
@@ -415,4 +418,27 @@ body {
   font-size: 14px;
   color: #aaa;
   margin-top: 30px;
+}
+
+
+
+/* 애니메이션 영역 */
+.career-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.career-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-item img {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
 }
