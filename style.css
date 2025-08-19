@@ -18,48 +18,49 @@ body {
   color: #000;
 }
 
-/* 전체 래퍼 */
 .wrap{
-  min-height: 100dvh;              /* 화면 꽉 채움 */
-  background-image: url('/-portfolio/img/pattern-1.png'); /* 격자 패턴 */
-  background-repeat: repeat;       /* 타일 반복 */
+  min-height: 100dvh;
+  background-image: url('img/pattern-1.png'); /* 격자 패턴 */
+  background-repeat: repeat;
   background-position: 0 0;
-  background-size: auto;           /* 원본 크기 유지 (필요시 32px 같은 값으로 조정 가능) */
+  background-size: auto;
 }
 .container {
       width: 100%;
-      max-width: 1200px;  /* 최대 폭 */
-      margin: 0 auto;     /* 가운데 정렬 */
-      padding: 0px;    /* 좌우 여백 (반응형 안전용) */
+      max-width: 1200px; 
+      margin: 0 auto;
+      padding: 0 40px;    /* 좌우 여백 (반응형 안전용) */
       box-sizing: border-box; /* 패딩 포함 폭 계산 */
 }
 
+
+
 /* header영역 */
 .header {
-  background: url('/-portfolio/img/header-background.png') repeat-x top center;
-  background-size: auto; /* 원본 크기 유지 */
+  background: url('./img/header-background.png') repeat-x top center;
+  background-size: auto;
   overflow: hidden;
 
-  -webkit-mask-image: url('/-portfolio/img/header-background.png');
+  -webkit-mask-image: url('./img/header-background.png');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: cover;
-  mask-image: url('/-portfolio/img/header-background.png');
+  mask-image: url('./img/header-background.png');
   mask-repeat: no-repeat;
   mask-size: cover;
 }
 @media screen and (min-width: 1921px) {
 /* 화면이 1920px보다 넓을 때만 가로로 늘리기 */
   .header {
-    background-size: 100% auto; /* 가로만 늘리고 세로는 비율 유지 */
+    background-size: 100% auto;
   }
 }
 .inner-header{
-  padding-top: 150px;
+  padding-top: 120px;
 }
 
 .selected-works {
-  text-align: right; /* 안에 있는 글자나 요소를 오른쪽 정렬 */
-  display: block; /* 혹시 inline이면 block으로 */
+  text-align: right;
+  display: block;
   font-family: 'NanumSquare', sans-serif;
   font-size: 16pt;
   color: #ffefc7;
@@ -68,22 +69,21 @@ body {
 .title, .name, .skills {text-align: left;}
 .title{
   font-family: 'PartialSansKR-Regular', sans-serif;
-  font-size: 86px;
+  font-size: 82px;
   color: #ffefc7;
+  line-height: 1.3;
 }
 .name {
   position: relative;
   display: inline-block;
   background-image:
-    linear-gradient(#fdc500, #fdc500),      /* 노란색 */
-    url('./img/paper-texture.png');          /* 종이 질감 */
-  background-size: cover, cover;            /* 둘 다 꽉 채움 */
+    linear-gradient(#fdc500, #fdc500), url('./img/paper-texture.png');
+  background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   background-blend-mode: multiply;   
-
   padding: 10px 50px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: bold;
   font-family: 'PartialSansKR-Regular', sans-serif;
   font-size: 100px;
@@ -91,28 +91,26 @@ body {
   letter-spacing: 2px;
 }
 
-
-/* 스킬 바 (한 줄 텍스트 버전) */
 .skills{
-  display: inline-block;            /* 내용만큼만 너비 */
-  padding: 28px 50px;
-  margin-top: 20px;           /* 알약 모양 */
-  color: #ffefc7;                   /* 텍스트 크림색 */
+  display: inline-block;
+  padding: 32px 50px 26px;
+  margin-top: 30px;
+  color: #ffefc7;
   font-family: 'NanumSquare', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
   font-weight: 800;
-  font-size: 24px;               /* 23pt */
+  font-size: 24px;
   line-height: 1.2;
 
   /* 어두운 파란 배경 위에서 보이는 입체감 */
-  background-color: #000053; /* 진한 파란 배경 */
+  background-color: #000053;
   border-radius: 9999px; 
   /* 안쪽 그림자: 왼쪽 위 방향 */
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4);
-
-  display: inline-block;        /* 외곽 드롭섀도 */
+  display: inline-block;
 }
+
 .skills span {
-  font-weight: 500; /* Light */
+  font-weight: 500;
   font-size: 24px;
 }
 
@@ -123,12 +121,12 @@ body {
 
 .yellow-friend .friend-body {
   position: absolute;
-  right: -150px;
-  bottom: -300px; /* 필요 시 아래쪽 기준 */
+  right: -190px;
+  bottom: -330px;
   width: 420px;
   height: 420px;
   background-color: #fdc500;
-  border-radius: 50%; /* 원형 */
+  border-radius: 50%;
 }
 
 .friend-body::before {
@@ -160,9 +158,158 @@ body {
 }
 
 .friend-face img {
-  width: 60%; /* 100%보다 줄이면 작아짐 */
+  width: 60%;
   height: auto;
 }
+
+
+
+/* 경력 및 포트폴리오 */
+.inner-career {
+  margin-top: 50px;
+  text-align: center;
+}
+/*타이틀영역*/
+.career-subtitle {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+  color: #000;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 rgba(253, 197, 0, 0.6);
+  margin-bottom: 0px;
+}
+.career-title {
+  font-family: 'PartialSansKR-Regular', sans-serif;
+  font-size: 90px;
+  line-height: 1.1;
+  color: #fdc500;
+  -webkit-text-stroke: 5px #000;
+  paint-order: stroke fill;
+  text-shadow: 6px 6px 0 rgba(0,0,0,0.95);
+  margin-top: 10px;
+}
+/*박스영역*/
+.career-list{
+  margin-top: -30px;
+}
+.career-item {
+  position: relative;
+  padding: 75px;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  margin-top: -25px;
+}
+.career-date {
+  text-align: right;
+  font-family: 'NanumSquare', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fdc500;
+  margin-bottom: 20px;
+}
+.career-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  margin-top: -40px;
+}
+.career-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.career-info h3 {
+  margin: 0;
+  font-family: 'NanumSquare', sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: #000;
+}
+.career-info p {
+  margin: 4px 0 0;
+  font-family: 'NanumSquare', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #333;
+}
+.career-info p span{
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* 영문 전용 폰트 */
+  font-weight: 200;
+  font-size: 17px;
+  color: #333;
+  vertical-align: top;
+}
+.career-skills {
+  display: flex;
+  flex-wrap: wrap; /* 줄바꿈 허용 */
+  margin-top: 10px;
+}
+.skill {
+  display: inline-block;
+  padding: 10px 18px;
+  margin: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'NanumSquare', sans-serif;
+  color: #222;
+  background: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+.skill .emoji {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  margin-right: 6px;
+}
+/*갤러리영역*/
+.career-gallery {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.gallery-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5개씩 한 줄 */
+  gap: 16px;
+}
+
+.gallery-wrapper img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.gallery-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-more {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #fdc500;
+  border: none;
+  border-radius: 20px;
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.gallery-more:hover {
+  background: #ffb300;
+}
+
 
 
 /* 푸터영역 */
