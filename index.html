@@ -357,6 +357,28 @@
         modal.style.display = "none";
       }
     };  
+
+    /* 애니메이션 영역 */
+    const items = document.querySelectorAll('.career-item');
+
+    function checkFadeUp() {
+      items.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkFadeUp);
+    window.addEventListener('load', checkFadeUp);
+
+    img.onload = function () {
+      const item = document.createElement("div");
+      item.className = "gallery-item";
+      item.appendChild(img);
+      target.appendChild(item);
+    };
   </script>
 </body>
 </html>
