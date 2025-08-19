@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="wrap">
+    <!-- header -->
     <header class="header">
       <div class="container">
         <div class="inner-header">
@@ -24,11 +25,104 @@
         </div>
         <!-- 옐로우-프랜드 -->
         <div class="yellow-friend">
-          <div class="friend-body"><div class="friend-face"><img src="/-portfolio/img/face-icon.png" alt="Face"></div></div>
+          <div class="friend-body">
+            <div class="friend-face">
+              <img src="./img/face-icon.png" alt="Face" draggable="false">
+            </div>
+          </div>
         </div>
       </div>
     </header>
     
+    <!-- Gallery -->
+    <section class="career">
+      <div class="container">
+        <div class="inner-career">
+
+          <!-- 상단 타이틀 -->
+          <h3 class="career-subtitle">CAREER & SKILLS HIGHLIGHTS</h3>
+          <h2 class="career-title">Work Experience</h2>
+
+          <!-- 경력 카드 래퍼 -->
+          <div class="career-list">
+            
+            <!-- 유한대학교 카드 -->
+            <div class="career-item">
+              <div class="career-text">
+                <div class="career-date">2014.03 - 2016.02</div>
+                <div class="career-header">
+                  <img src="./img/career-icon-1.png" alt="아이콘" class="career-icon">
+                  <div class="career-info">
+                    <h3>유한대학교</h3>
+                    <p>[IT소프트웨어학과] 졸업</p>
+                  </div>
+                </div>
+              </div>
+              <div class="career-skills">
+                <span class="skill"><span class="emoji">✨</span>Photoshop</span>
+                <span class="skill"><span class="emoji">💻</span>HTML</span>
+                <span class="skill"><span class="emoji">🎨</span>CSS</span>
+                <span class="skill"><span class="emoji">⚙️</span>JavaScript</span>
+                <span class="skill"><span class="emoji">🛠</span>PHP</span>
+                <span class="skill"><span class="emoji">🗄️</span>MySQL</span>
+              </div>
+              <!-- 나중에 갤러리 들어갈 자리 -->
+              <div class="career-gallery"></div>
+            </div>
+
+            <!-- 허브아트컴퓨터학원 카드 -->
+            <div class="career-item">
+              <div class="career-text">
+                <div class="career-date">2019.03 - 2019.05</div>
+                <div class="career-header">
+                  <img src="./img/career-icon-2.png" alt="아이콘" class="career-icon">
+                  <div class="career-info">
+                    <h3>허브아트컴퓨터학원</h3>
+                    <p>[디지털 디자인] 수료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="career-skills">
+                <span class="skill"><span class="emoji">✨</span>Photoshop</span>
+                <span class="skill"><span class="emoji">🖋</span>Illustrator</span>
+                <span class="skill"><span class="emoji">💻</span>HTML</span>
+                <span class="skill"><span class="emoji">🎨</span>CSS</span>
+                <span class="skill"><span class="emoji">⚙️</span>JavaScript</span>
+              </div>
+              <!-- 나중에 갤러리 들어갈 자리 -->
+              <div class="career-gallery"></div>
+            </div>
+
+            <!-- 인포스월드 카드 -->
+            <div class="career-item">
+              <div class="career-text">
+                <div class="career-date">2019.10 - 2021.06</div>
+                <div class="career-header">
+                  <img src="./img/career-icon-3.png" alt="아이콘" class="career-icon">
+                  <div class="career-info">
+                    <h3>INFOSWORLD</h3>
+                    <p>마케팅 콘텐츠 디자이너<span> · Marketing Designer</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="career-skills">
+                <span class="skill"><span class="emoji">✨</span>Photoshop</span>
+                <span class="skill"><span class="emoji">🖋</span>Illustrator</span>
+                <span class="skill"><span class="emoji">🥭</span>망고보드</span>
+                <span class="skill"><span class="emoji">💼</span>WordPress</span>
+              </div>
+              <div class="career-gallery">
+                <div class="gallery-wrapper"></div>
+                <button class="gallery-more">더보기</button>
+              </div>
+            </div>
+
+          </div><!-- .career-list -->
+
+        </div>
+      </div>
+    </section>
+
     <!-- Main -->
     <main class="main">
       <section class="about">
@@ -52,7 +146,14 @@
     <footer class="footer">
       <div class="container">
         <div class="inner-footer">
-          
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <p class="footer-copy">© 2025 Your Name. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -63,7 +164,7 @@
     function adjustHeader() {
       const header = document.querySelector('.header');
       const img = new Image();
-      img.src = '/-portfolio/img/header-background.png';
+      img.src = './img/header-background.png';
 
       img.onload = function () {
         const originalWidth = img.width;   // 1920
@@ -119,6 +220,8 @@
 
       face.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
     });
+
+    /* 갤러리 이미지 출력 및 로딩 */
   </script>
 </body>
 </html>
