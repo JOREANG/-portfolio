@@ -163,7 +163,7 @@
               </div>
             </div>
           </div>
-          <!-- .career-list -->
+          <!-- career-list -->
 
           <!-- 이미지 팝업 모달 -->
           <div id="img-modal" class="modal">
@@ -177,19 +177,15 @@
     <div style="text-align:center; font-size:32px; color:#000; margin:20px 0;">
       Last Update : 2025-08-20
     </div>
-    
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <div class="inner-footer">
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <p class="footer-copy">© 2025 Your Name. All rights reserved.</p>
+        <div class="footer-inner">
+          <div class="footer-name">JOREANG</div>
+          <div class="footer-roles">Web Designer · Marketing Designer · Content Designer</div>
+          <hr class="footer-line">
+          <div class="footer-copy">Copyright 2025 JOREANG. All rights reserved. - yj_lm@naver.com</div>
         </div>
       </div>
     </footer>
@@ -251,64 +247,60 @@
 
     /* 갤러리 이미지 출력 및 로딩 */
     const galleryConfig = {
-      infosworld: { path: "./img/gallery/infosworld/", loaded: 0, ended: false },
-      youngshin: { path: "./img/gallery/youngshin/", loaded: 0, ended: false },
-      namo: { path: "./img/gallery/namo/", loaded: 0, ended: false },
+      infosworld: { path: "./img/gallery/infosworld/", loaded: 0, ended: false, batch: 5 },
+      youngshin: { path: "./img/gallery/youngshin/", loaded: 0, ended: false, batch: 5 },
+      namo: { path: "./img/gallery/namo/", loaded: 0, ended: false, batch: 10 },
     };
 
     // 이미지 추가 로드
     function loadImages(category, targetId, batch = 5) {
-  const target = document.getElementById(targetId);
-  const config = galleryConfig[category];
-  if (config.ended) return;
+      const target = document.getElementById(targetId);
+      const config = galleryConfig[category];
+      if (config.ended) return;
 
-  let loadedThisBatch = 0;
+      let loadedThisBatch = 0;
 
-  for (let i = 1; i <= batch; i++) {
-    config.loaded++;
-    const url = config.path + config.loaded + ".jpg";
+      for (let i = 1; i <= batch; i++) {
+        config.loaded++;
+        const url = config.path + config.loaded + ".jpg";
 
-    const img = new Image();
-    img.src = url;
-    img.alt = category + " " + config.loaded;
+        const img = new Image();
+        img.src = url;
+        img.alt = category + " " + config.loaded;
 
-    img.onload = function () {
-      const item = document.createElement("div");
-      item.className = "gallery-item";
-      item.appendChild(img);
-      target.appendChild(item);
-      loadedThisBatch++;
+        img.onload = function () {
+          const item = document.createElement("div");
+          item.className = "gallery-item";
+          item.appendChild(img);
+          target.appendChild(item);
+          loadedThisBatch++;
 
-      // 마지막 이미지까지 로딩되었을 때만 다음 번호 검사
-      if (loadedThisBatch === batch) {
-        checkNextImage(category);
+          if (loadedThisBatch === batch) {
+            checkNextImage(category);
+          }
+        };
+
+        img.onerror = function () {
+          config.loaded--;
+          config.ended = true;
+          updateButton(category);
+        };
       }
-    };
+    }
 
-    img.onerror = function () {
-      config.loaded--;
-      config.ended = true;
-      updateButton(category);
-    };
-  }
-}
+    function checkNextImage(category) {
+      const config = galleryConfig[category];
+      const testImg = new Image();
+      testImg.src = config.path + (config.loaded + 1) + ".jpg";
 
-// 👉 다음 번호 이미지가 있는지 검사
-function checkNextImage(category) {
-  const config = galleryConfig[category];
-  const testImg = new Image();
-  testImg.src = config.path + (config.loaded + 1) + ".jpg";
-
-  testImg.onload = function () {
-    // 다음 이미지 있으면 그대로 진행
-    updateButton(category);
-  };
-  testImg.onerror = function () {
-    // 다음 이미지 없으면 여기서 끝 처리
-    config.ended = true;
-    updateButton(category);
-  };
-}
+      testImg.onload = function () {
+        updateButton(category);
+      };
+      testImg.onerror = function () {
+        config.ended = true;
+        updateButton(category);
+      };
+    }
 
     //버튼 전환
     function updateButton(category) {
@@ -323,7 +315,7 @@ function checkNextImage(category) {
       } else {
         btn.textContent = "더보기";
         btn.onclick = function () {
-          loadImages(category, category + "-grid", 5);
+          loadImages(category, category + "-grid", config.batch);
         };
       }
     }
@@ -341,7 +333,7 @@ function checkNextImage(category) {
     window.onload = function () {
       loadImages("infosworld", "infosworld-grid", 5);
       loadImages("youngshin", "youngshin-grid", 5);
-      loadImages("namo", "namo-grid", 5);
+      loadImages("namo", "namo-grid", 10);
     };
 
     /* 이미지 팝업 확대 */
