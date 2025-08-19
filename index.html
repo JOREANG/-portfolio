@@ -112,13 +112,64 @@
                 <span class="skill"><span class="emoji">💼</span>WordPress</span>
               </div>
               <div class="career-gallery">
-                <div class="gallery-wrapper"></div>
-                <button class="gallery-more">더보기</button>
+                <div class="gallery-wrapper" id="infosworld-grid"></div>
+                <button class="gallery-more" data-category="infosworld">더보기</button>
               </div>
             </div>
 
-          </div><!-- .career-list -->
+            <!-- 영신트레이더스 카드 -->
+            <div class="career-item">
+              <div class="career-text">
+                <div class="career-date">2021.09 - 2022.03</div>
+                <div class="career-header">
+                  <img src="./img/career-icon-4.png" alt="아이콘" class="career-icon">
+                  <div class="career-info">
+                    <h3>영신트레이더스</h3>
+                    <p>이커머스 비주얼 디자이너<span> · E-commerce Visual Designer</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="career-skills">
+                <span class="skill"><span class="emoji">✨</span>Photoshop</span>
+                <span class="skill"><span class="emoji">🥭</span>망고보드</span>
+              </div>
+              <div class="career-gallery">
+                <div class="gallery-wrapper" id="youngshin-grid"></div>
+                <button class="gallery-more" data-category="youngshin">더보기</button>
+              </div>
+            </div>
 
+            <!-- 나모 카드 -->
+            <div class="career-item">
+              <div class="career-text">
+                <div class="career-date">2023.02 - 2025.04</div>
+                <div class="career-header">
+                  <img src="./img/career-icon-5.png" alt="아이콘" class="career-icon">
+                  <div class="career-info">
+                    <h3>NAMO</h3>
+                    <p>웹 컨텐츠 디자이너<span> · Web Content Designer</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="career-skills">
+                <span class="skill"><span class="emoji">✨</span>Photoshop</span>
+                <span class="skill"><span class="emoji">🖋</span>Illustrator</span>
+                <span class="skill"><span class="emoji">💻</span>HTML</span>
+                <span class="skill"><span class="emoji">🎨</span>CSS</span>
+              </div>
+              <div class="career-gallery">
+                <div class="gallery-wrapper" id="namo-grid"></div>
+                <button class="gallery-more" data-category="namo">더보기</button>
+              </div>
+            </div>
+          </div>
+          <!-- .career-list -->
+
+          <!-- 이미지 팝업 모달 -->
+          <div id="img-modal" class="modal">
+            <span class="modal-close">&times;</span>
+            <img class="modal-content" id="modal-img">
+          </div>
         </div>
       </div>
     </section>
@@ -167,20 +218,17 @@
       img.src = './img/header-background.png';
 
       img.onload = function () {
-        const originalWidth = img.width;   // 1920
-        const originalHeight = img.height; // 예: 400
+        const originalWidth = img.width;
+        const originalHeight = img.height;
         const winWidth = window.innerWidth;
 
         if (winWidth <= 1920) {
           header.style.backgroundSize = 'auto';
           header.style.backgroundPosition = 'center top';
-
-          // 마스크도 동일하게
           header.style.webkitMaskSize = 'auto';
           header.style.maskSize = 'auto';
           header.style.webkitMaskPosition = 'center top';
           header.style.maskPosition = 'center top';
-
           header.style.height = originalHeight + 'px';
           return;
         }
@@ -192,8 +240,6 @@
         header.style.height = originalHeight + 'px';
         header.style.backgroundSize = `${winWidth}px auto`;
         header.style.backgroundPosition = `center -${extraHeight}px`;
-
-        // 마스크도 동일하게 반영
         header.style.webkitMaskSize = `${winWidth}px auto`;
         header.style.maskSize = `${winWidth}px auto`;
         header.style.webkitMaskPosition = `center -${extraHeight}px`;
@@ -210,11 +256,8 @@
     document.addEventListener('mousemove', (e) => {
       const { innerWidth, innerHeight } = window;
 
-      // 마우스 위치를 화면 중앙 기준으로 비율 계산 (-1 ~ 1)
       const x = (e.clientX / innerWidth - 0.5) * 2;
       const y = (e.clientY / innerHeight - 0.5) * 2;
-
-      // 얼굴 살짝 이동 (최대 10px)
       const moveX = x * 30;
       const moveY = y * 30;
 
@@ -222,6 +265,121 @@
     });
 
     /* 갤러리 이미지 출력 및 로딩 */
+    const galleryConfig = {
+      infosworld: { path: "./img/gallery/infosworld/", loaded: 0, ended: false },
+      youngshin: { path: "./img/gallery/youngshin/", loaded: 0, ended: false },
+      namo: { path: "./img/gallery/namo/", loaded: 0, ended: false },
+    };
+
+    // 이미지 추가 로드
+    function loadImages(category, targetId, batch = 5) {
+  const target = document.getElementById(targetId);
+  const config = galleryConfig[category];
+  if (config.ended) return;
+
+  let loadedThisBatch = 0;
+
+  for (let i = 1; i <= batch; i++) {
+    config.loaded++;
+    const url = config.path + config.loaded + ".jpg";
+
+    const img = new Image();
+    img.src = url;
+    img.alt = category + " " + config.loaded;
+
+    img.onload = function () {
+      const item = document.createElement("div");
+      item.className = "gallery-item";
+      item.appendChild(img);
+      target.appendChild(item);
+      loadedThisBatch++;
+
+      // 마지막 이미지까지 로딩되었을 때만 다음 번호 검사
+      if (loadedThisBatch === batch) {
+        checkNextImage(category);
+      }
+    };
+
+    img.onerror = function () {
+      config.loaded--;
+      config.ended = true;
+      updateButton(category);
+    };
+  }
+}
+
+// 👉 다음 번호 이미지가 있는지 검사
+function checkNextImage(category) {
+  const config = galleryConfig[category];
+  const testImg = new Image();
+  testImg.src = config.path + (config.loaded + 1) + ".jpg";
+
+  testImg.onload = function () {
+    // 다음 이미지 있으면 그대로 진행
+    updateButton(category);
+  };
+  testImg.onerror = function () {
+    // 다음 이미지 없으면 여기서 끝 처리
+    config.ended = true;
+    updateButton(category);
+  };
+}
+
+    //버튼 전환
+    function updateButton(category) {
+      const btn = document.querySelector(`.gallery-more[data-category="${category}"]`);
+      const config = galleryConfig[category];
+
+      if (config.ended) {
+        btn.textContent = "접기";
+        btn.onclick = function () {
+          collapseGallery(category);
+        };
+      } else {
+        btn.textContent = "더보기";
+        btn.onclick = function () {
+          loadImages(category, category + "-grid", 5);
+        };
+      }
+    }
+
+    //갤러리 접기
+    function collapseGallery(category) {
+      const target = document.getElementById(category + "-grid");
+      target.innerHTML = "";
+      galleryConfig[category].loaded = 0;
+      galleryConfig[category].ended = false;
+      loadImages(category, category + "-grid", 5);
+      updateButton(category);
+    }
+
+    window.onload = function () {
+      loadImages("infosworld", "infosworld-grid", 5);
+      loadImages("youngshin", "youngshin-grid", 5);
+      loadImages("namo", "namo-grid", 5);
+    };
+
+    /* 이미지 팝업 확대 */
+    const modal = document.getElementById("img-modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".modal-close");
+
+    document.addEventListener("click", function(e) {
+      if (e.target.tagName === "IMG" && e.target.closest(".gallery-item")) {
+        modal.style.display = "block";
+        modalImg.src = e.target.src;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };  
   </script>
 </body>
 </html>
